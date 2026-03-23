@@ -2,22 +2,18 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1w0DKJEy7RmOIiQsvr0loQe8gU7bszH8Y#scrollTo=dayKgVoEh1KJ)
 
-We used Transfer Learning, which mimics how a student learns: first from a textbook, then from real-world experience.
+Okay so i trained a VAE here on the synthetic gravitational wave data generated using
 
-# Phase 1:
-We generated a large, synthetic dataset of 1000 gravitational wave signals using the same physics models (IMRPhenomD) that professional LIGO researchers use. For each signal, we knew the exact mass and spin of the black holes.
+and why gravitational waves??? cause mostly the data which comes to us is noisy and we have to clean it to understand it so how about something which can be trained on noisy data and here you go VAEs YAYYY.
 
-My Variational Autoencoder (VAE), studied this perfect textbook, learning the intricate relationship between a signal's shape and its physical parameters.
+signal(t) = exp(-t * spin) * cos(mass * 10 * t) + noise
 
-# Phase 2: 
-After mastering the theory, the AI did a short "internship" with real LIGO data. We fine-tuned the model on a small set of 5 actual gravitational wave events, teaching it to adapt its theoretical knowledge to the messy, noisy reality of the detectors.
+My intuition behind choosing VAEs is that i recently studied VAEs and learned about thier latent space representation capabilities and found out that current approaches doesnt use latent represenation because it uses clean fixed signals.
+So i thought VAEs can help here and made then made this.
 
-The Final Exam: Predicting GW150914
-We put our trained AI to the ultimate test: analyzing the famous GW150914 signal, the very first one ever detected.
+# Evaluation 
 
-# The Results:
-The AI's predictions are remarkably accurate, showcasing the power of this approach.
+<img width="1089" height="590" alt="image" src="https://github.com/user-attachments/assets/4b506b26-5092-4496-aace-845c0fcc1cb5" />
 
-Parameter	AI's Prediction	Actual Known Value	Error
-Total Mass	~65.30 Solar Masses	~65.3 Solar Masses	< 0.1%
-Effective Spin	~-0.01	~-0.06	Extremely Close
+I used MAPE ( Mean absolute percentage error ) here because it penalize it heavily for missing both small and large values
+
